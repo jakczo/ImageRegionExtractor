@@ -11,27 +11,62 @@ display_image = None
 current_image_path = None
 
 
+# def mouse_callback(event, x, y, flags, param):
+#     global drawing, start_x, start_y, display_image
+
+#     if event == cv2.EVENT_LBUTTONDOWN:
+#         drawing = True
+#         start_x, start_y = x, y
+
+#     elif event == cv2.EVENT_MOUSEMOVE and drawing:
+#         display_image = original_image.copy()
+#         for (x1, y1, x2, y2) in rectangles:
+#             cv2.rectangle(display_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+#         cv2.rectangle(display_image, (start_x, start_y), (x, y), (255, 0, 0), 2)
+
+#     elif event == cv2.EVENT_LBUTTONUP:
+#         drawing = False
+#         x1, x2 = sorted([start_x, x])
+#         y1, y2 = sorted([start_y, y])
+
+#         rectangles.append((x1, y1, x2, y2))
+
+#         cv2.rectangle(display_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
 def mouse_callback(event, x, y, flags, param):
     global drawing, start_x, start_y, display_image
 
-    if event == cv2.EVENT_LBUTTONDOWN:
+    # First click → start rectangle
+    if event == cv2.EVENT_LBUTTONDOWN and not drawing:
         drawing = True
         start_x, start_y = x, y
 
+    # Mouse move → show preview
     elif event == cv2.EVENT_MOUSEMOVE and drawing:
         display_image = original_image.copy()
+
+        # draw existing rectangles
         for (x1, y1, x2, y2) in rectangles:
             cv2.rectangle(display_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+        # draw preview rectangle
         cv2.rectangle(display_image, (start_x, start_y), (x, y), (255, 0, 0), 2)
 
-    elif event == cv2.EVENT_LBUTTONUP:
+    # Second click → finish rectangle
+    elif event == cv2.EVENT_LBUTTONDOWN and drawing:
         drawing = False
+
         x1, x2 = sorted([start_x, x])
         y1, y2 = sorted([start_y, y])
 
         rectangles.append((x1, y1, x2, y2))
 
-        cv2.rectangle(display_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        display_image = original_image.copy()
+
+        # redraw all rectangles
+        for (rx1, ry1, rx2, ry2) in rectangles:
+            cv2.rectangle(display_image, (rx1, ry1), (rx2, ry2), (0, 255, 0), 2)
+
 
 
 def save_crops():
