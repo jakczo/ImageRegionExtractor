@@ -16,8 +16,10 @@ install opencv and run program
 >pip install opencv-python
 >python main.py
 
-ESC - quit, 
-s - save current crops, 
-r - reset rectangles, 
-n - save crops and go next, 
-backspace / delete - undo
+ESC - point "last_session" file to a current image (with no rectangles) and quit,
+n - extract crops as new images, go next, and point "last_session" to an opened image,
+c - clear rectangles, 
+backspace / delete - undo last rectangle,
+l - rotate left,
+r - rotate right,
+w - overwrite original image.
