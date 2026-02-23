@@ -22,4 +22,7 @@ c - clear rectangles,
 backspace / delete - undo last rectangle,
 l - rotate left,
 r - rotate right,
-w - overwrite original image.
+w - overwrite original image,
+d - discard image.
+
+last_session is saved in the script's dir

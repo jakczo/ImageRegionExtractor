@@ -98,6 +98,9 @@ def load_image(path):
 
 
 def update_window_title():
+    if current_image_path is None:
+        return
+
     window_title = f"Image Region Extractor - {current_image_path.name}"
     cv2.setWindowTitle("Image", window_title)
 
@@ -195,8 +198,9 @@ def main():
         cv2.imshow("Image", display_image)
         key = cv2.waitKey(1) & 0xFF
 
-        if key == 27:  # ESC
-            save_session(image_paths[index])
+        if key == 27:
+            if index < len(image_paths):
+                save_session(image_paths[index])
             break
 
         elif key == ord("l"):
@@ -234,9 +238,22 @@ def main():
             save_session(next_image)
             load_image(next_image)
 
-
         elif key == ord("w"):
             overwrite_original()
+
+        elif key == ord("d"):
+            # skip without saving
+            index += 1
+
+            if index >= len(image_paths):
+                print("No more images.")
+                break
+
+            next_image = image_paths[index]
+            save_session(next_image)
+            load_image(next_image)
+
+            print("Image discarded.")
 
     cv2.destroyAllWindows()
 
