@@ -5,6 +5,8 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog
 
+import shutil
+
 drawing = False
 start_x, start_y = -1, -1
 rectangles = []
@@ -57,6 +59,12 @@ def save_crops():
 
     output_dir = input_dir.parent / "output"
     output_dir.mkdir(exist_ok=True)
+
+    if not rectangles:
+        destination = output_dir / current_image_path.name
+        shutil.copy2(current_image_path, destination)
+        print(f"Copied full image: {destination}")
+        return
 
     for idx, (x1, y1, x2, y2) in enumerate(rectangles, start=1):
         crop = original_image[y1:y2, x1:x2]
