@@ -16,8 +16,10 @@ confirm that you're using python and pip from venv
 
 install opencv and run program
 >pip install opencv-python
+>
 >python main.py
 
+fyi last_session is saved in the script's dir
 
 >ESC - point "last_session" file to a current image (with no rectangles) and quit,
 >
@@ -34,5 +36,3 @@ install opencv and run program
 >w - overwrite original image,
 >
 >d - discard image.
-
-last_session is saved in the script's dir
