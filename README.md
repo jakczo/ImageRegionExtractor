@@ -36,3 +36,35 @@ fyi last_session is saved in the script's dir
 >w - overwrite original image,
 >
 >d - discard image.
+
+Expected output:
+
+Saved: /Users/kuba/Desktop/output/00014_IMG_20260207_123302_02.jpg
+
+Image discarded.
+
+Last rectangle removed.
+
+Last rectangle removed.
+
+Saved: /Users/kuba/Desktop/output/00016_IMG_20260207_123446_01.jpg
+
+Saved: /Users/kuba/Desktop/output/00016_IMG_20260207_123446_02.jpg
+
+Saved: /Users/kuba/Desktop/output/00016_IMG_20260207_123446_03.jpg
+
+Saved: /Users/kuba/Desktop/output/00016_IMG_20260207_123446_04.jpg
+
+Saved: /Users/kuba/Desktop/output/00016_IMG_20260207_123446_05.jpg
+
+Copied full image: /Users/kuba/Desktop/output/00017_IMG_20260207_123449.jpg
+
+Saved: /Users/kuba/Desktop/output/00018_IMG_20260207_123456_01.jpg
+
+Saved: /Users/kuba/Desktop/output/00018_IMG_20260207_123456_02.jpg
+
+Copied full image: /Users/kuba/Desktop/output/00019_IMG_20260207_123458.jpg
+
+Copied full image: /Users/kuba/Desktop/output/00020_IMG_20260207_123508.jpg
+
+Overwritten: 00021_IMG_20260207_123524.jpg
